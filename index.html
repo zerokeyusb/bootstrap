@@ -43,18 +43,31 @@
           <h1 class="mb-5">Follow Progress</h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form id="sib-form" method="POST" action="https://1263ae08.sibforms.com/serve/MUIEAFsrESDk8HM6RCXYJyA-Q2HR-O0HWCx4peG8R3gRdhcLXOtD7XbYgLhRbzCnc2FraAEZx8Kf21xREnjNjUqNxwq86KeJT-wRrOXK69yrkSaexM5rDZACIHX-yjhnpSoVuQj7i6xI3Jd6CVJ9a9AL1uJspmbyvaK89u1EE98FSZ21TqL-rdrijzcH2m46YnnV4JEtt9sVE3Gd">
+   
+          
+          
+     <form name="submit-to-google-sheet">
+  <input name="email" type="email" placeholder="Email" required>
+  <button type="submit">Send</button>
+</form>
 
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Enter your email..." data-required="true" required />
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Subscribe to Updates</button>
-               <!-- <button class="btn btn-block btn-lg btn-primary" form="sib-form" type="submit"> -->
-              </div>
-            </div>
-          </form>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyRwON6E_2Nc13UPulMjkyGbMWHktUSsSd8FdOvnw81LEUstetRHRptRmFU9Xq9KaZvpg/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>     
+          
+          
+          
+          
+          
+          
         </div>
       </div>
     </div>
